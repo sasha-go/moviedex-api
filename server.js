@@ -41,7 +41,7 @@ app.get("/movie", function handleGetMovie(req, res) {
 
   // GENRE FILTER
   if (req.query.genre) {
-    response = response.filter((movie) =>
+    response = response.filter((movie) => 
       movie.genre.toLowerCase().includes(req.query.genre.toLowerCase())
     );
   }
@@ -49,14 +49,14 @@ app.get("/movie", function handleGetMovie(req, res) {
   // COUNTRY FILTER
   if (req.query.country) {
     response = response.filter((movie) => {
-      movie.country.toLowerCase().includes(req.query.country.toLowerCase());
+      return movie.country.toLowerCase().includes(req.query.country.toLowerCase());
     });
   }
 
   // AVG VOTE FILTER
   if (req.query.avg_vote) {
     response = response.filter((movie) => {
-      Number(movie.avg_vote >= Number(req.query.avg_vote));
+      return Number(movie.avg_vote >= Number(req.query.avg_vote));
     });
   }
 
